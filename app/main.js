@@ -30,6 +30,7 @@ function ($, _, Backbone, user, likes) {
 	var um = new user.model();
 	var uv = new user.view({model: um});
 
-	if (window.location.hash.length > 1)
-		um.fetch();
+	um.fetch();
+
+	ui();
 });
