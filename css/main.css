@@ -1,3 +1,10 @@
+#ifgs {
+	color: #333;
+	font-family: sans-serif;
+	width: 258px;
+	margin: 0px auto;
+}
+
 /* Clearfix */
 .clearfix:after {
 	content: ".";
@@ -20,15 +27,13 @@ html[xmlns] .clearfix {
 	height: 1%;
 }
 
-/* IFizzGigs User Box */
+/* IFizzGigs Header */
 
-#ifgs {
-	color: #333;
-	font-family: sans-serif;
-	width: 258px;
-	margin: 0px auto;
+#ifgs #header {
+	text-align: center;
 }
 
+/* IFizzGigs User Box */
 #ifgs .user {
 	border: 1px solid #999;
 	border-radius: 2px;
@@ -70,4 +75,5 @@ html[xmlns] .clearfix {
 	background-color: #729fcf;
 	border-radius: 2px;
 	float: left;
+	cursor: pointer;
 }

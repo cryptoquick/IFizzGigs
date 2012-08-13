@@ -27,10 +27,31 @@ require([
 	'app/likes'
 ],
 function ($, _, Backbone, user, likes) {
-	var um = new user.model();
-	var uv = new user.view({model: um});
+	// Initialize UI Events
+	$('.user').find('.userInput').on('focus', function () {
+		$(this).val('');
+	})
+	.on('blur', function () {
+		if ($(this).val() === '')
+			$(this).val('Facebook Username');
+	})
+	.val('Facebook Username');
 
-	um.fetch();
+	// Yours
+	var yourum = new user.model();
+	yourum.set({'whose': 'yours'});
+	$('.user').append('<div class="user_' + yourum.get('whose') + '">');
+	var youruv = new user.view({model: yourum});
+	// youruv.setElement($('.user_' + yourum.get('whose')));
+	// console.log($('.user_' + yourum.get('whose')));
 
-	ui();
+	// Theirs
+	var theirum = new user.model();
+	theirum.set({'whose': 'theirs'});
+	$('.user').append('<div class="user_' + theirum.get('whose') + '">');
+	var theiruv = new user.view({model: theirum});
+	// theiruv.setElement($('.user_' + theirum.get('whose')));
+
+	// yourum.fetch();
+	// theirum.fetch();
 });
