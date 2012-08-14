@@ -29,6 +29,9 @@ function ($, _, Backbone, Handlebars, likes, html) {
 				if (this.model.get('title'))
 					this.render();
 			}, this);
+
+			$('.userInput').on('keypress', $.proxy(this.keyEvent, this));
+			$('.userInputSubmit').on('click', $.proxy(this.clickEvent, this));
 		},
 
 		render: function (evt) {
@@ -36,10 +39,10 @@ function ($, _, Backbone, Handlebars, likes, html) {
 			this.$el.find('.user_' + this.model.get('title')).html(this.template(this.model.toJSON()));
 		},
 
-		events: {
+		/*events: {
 			'keypress .userInput': 'keyEvent',
 			'click .userInputSubmit': 'clickEvent'
-		},
+		},*/
 
 		template: Handlebars.compile(html),
 
@@ -47,18 +50,18 @@ function ($, _, Backbone, Handlebars, likes, html) {
 			// If return key is pressed, set the graph
 			if (evt.which == 13) {
 				evt.preventDefault();
-				this.fetchData();
+				this.fetchData(this);
 			}
 		},
 
 		clickEvent: function () {
-			this.fetchData();
+			this.fetchData(this);
 		},
 
 		nameField: '',
 
-		fetchData: function () {
-			this.nameField = this.$el.find('.userInput').val();
+		fetchData: function (self) {
+			this.nameField = $('.userInput').val();
 
 			// Validate Namefield
 			if (this.nameField.length > 0 && this.nameField != 'Facebook Username') {
@@ -91,7 +94,7 @@ function ($, _, Backbone, Handlebars, likes, html) {
 		fetchOperation: function (response) {
 			// Fetch our own data, preserving 'title' attribute
 			var title = this.model.get('title');
-			this.model.clear();
+			this.model.clear({'silent': true});
 			this.model.set({'title': title});
 			this.model.accessToken = response.authResponse.accessToken;
 

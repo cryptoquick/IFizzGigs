@@ -28,7 +28,7 @@ require([
 ],
 function ($, _, Backbone, user, likes) {
 	// Initialize UI Events
-	$('.user').find('.userInput').on('focus', function () {
+	$('.userInput').on('focus', function () {
 		$(this).val('');
 	})
 	.on('blur', function () {
@@ -37,7 +37,7 @@ function ($, _, Backbone, user, likes) {
 	})
 	.val('Facebook Username');
 
-	/* Make some models and views for our Facebook users */
+	/* Set up some models and views for our Facebook users */
 	// Yours
 	var yourum = new user.model({'title': 'yours'});
 	$('.user').append('<div class="user_' + yourum.get('title') + '">');
@@ -60,10 +60,13 @@ function ($, _, Backbone, user, likes) {
 	});
 
 	ifgs.likes = new LikesCollection();
-
-	// ifgs.users.where('title': 'yours')[0].compare(ifgs.users.)
-	// console.log(ifgs.users.at(0));
 	
-	// Number likes fetched. Likes will run a comparison after state 2.
+	// Number of likes fetched. Likes will run a comparison after state 2.
 	ifgs.likeState = 0;
+
+	$('#reset').click(function () {
+		likes.reset(user);
+		$('#userInputFields').show();
+		$(this).hide();
+	}).hide();
 });

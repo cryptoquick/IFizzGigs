@@ -28,14 +28,23 @@ html[xmlns] .clearfix {
 	height: 1%;
 }
 
-/* IFizzGigs Header */
+/* Reset */
+a {
+	color: #333;
+	text-decoration: none;
+}
 
+a img {
+    border: 0;
+}
+
+/* IFizzGigs Header */
 #ifgs #header {
 	
 }
 
 /* IFizzGigs User Styles */
-#ifgs .user, #ifgs .likes {
+#ifgs .user, #ifgs .likes, #ifgs #controls {
 	border: 1px solid #999;
 	border-radius: 2px;
 	background-color: #eee;
@@ -53,7 +62,7 @@ html[xmlns] .clearfix {
 	border-radius: 4px;
 }
 
-#ifgs .user .userInput {
+#ifgs .userInput {
 	border: 1px solid #999;
 	background-color: #fff;
 	border-radius: 1px;
@@ -64,7 +73,7 @@ html[xmlns] .clearfix {
 	float: left;
 }
 
-#ifgs .user .userInputSubmit {
+#ifgs .userInputSubmit, #reset {
 	width: 30px;
 	padding: 3px 8px;
 	margin-left: 9px;
@@ -79,7 +88,11 @@ html[xmlns] .clearfix {
 }
 
 /* IFizzGigs Likes Styles */
-
 #ifgs .likes img {
-	padding: 3px;
+	margin: 3px;
+}
+
+/* IFizzGigs Reset Button */
+#ifgs #reset {
+	width: 200px;
 }
