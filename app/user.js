@@ -35,6 +35,8 @@ function ($, _, Backbone, Handlebars, likes, html) {
 		},
 
 		render: function (evt) {
+			$('.user').show();
+			
 			// Render serialized model to compiled template
 			this.$el.find('.user_' + this.model.get('title')).html(this.template(this.model.toJSON()));
 		},

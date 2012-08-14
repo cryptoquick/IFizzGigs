@@ -1,3 +1,7 @@
+body {
+	background: url('/favicon.png') left top no-repeat;
+}
+
 #ifgs {
 	color: #333;
 	font-family: sans-serif;
@@ -95,4 +99,8 @@ a img {
 /* IFizzGigs Reset Button */
 #ifgs #reset {
 	width: 200px;
+}
+
+#ifgs .user, #ifgs .likes, #ifgs #reset, #ifgs > h3 {
+	display: none;
 }

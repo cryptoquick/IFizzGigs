@@ -51,6 +51,8 @@ function ($, _, Backbone, Handlebars, html) {
 		template: Handlebars.compile(html),
 
 		render: function (matches) {
+			$('.likes, #ifgs h3').show();
+
 			this.$el.html(this.template({'likeID': this.model.get('matches')}));
 			var title = this.model.get('user');
 

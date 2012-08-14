@@ -68,5 +68,5 @@ function ($, _, Backbone, user, likes) {
 		likes.reset(user);
 		$('#userInputFields').show();
 		$(this).hide();
-	}).hide();
+	})
 });
