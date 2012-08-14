@@ -65,8 +65,10 @@ function ($, _, Backbone, user, likes) {
 	ifgs.likeState = 0;
 
 	$('#reset').click(function () {
-		likes.reset(user);
+		// Had to cut this off early, here's a kludge:
+		document.location.reload();
+		/*likes.reset(user);
 		$('#userInputFields').show();
-		$(this).hide();
+		$(this).hide();*/
 	})
 });

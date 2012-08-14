@@ -1,5 +1,5 @@
 {{#each likeID}}
-<a href="https://www.facebook.com/{{this}}" alt="">
-	<img src="https://graph.facebook.com/{{this}}/picture"></img>
+<a href="https://www.facebook.com/{{this.id}}" alt="{{this.name}}">
+	<img src="https://graph.facebook.com/{{this.id}}/picture"></img>
 </a>
 {{/each}}

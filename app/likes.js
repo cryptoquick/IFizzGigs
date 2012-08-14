@@ -23,11 +23,27 @@ function ($, _, Backbone, Handlebars, html) {
 		},
 
 		compare: function (subject0, subject1) {
-			var likeIDs0 = _.pluck(subject0.get('data'), 'id');
-				likeIDs1 = _.pluck(subject1.get('data'), 'id');
+			var likeIDs0 = _.pluck(subject0.get('data'), 'id'),
+				likeIDs1 = _.pluck(subject1.get('data'), 'id'),
+				isect = _.intersection(likeIDs0, likeIDs1),
+				resultSet = [];
 
-			// console.log(subject0.data, subject1.data);
-			this.set({'matches': _.intersection(likeIDs0, likeIDs1)}, {'silent': true});
+			// Combine IDs with Like Names
+			for (var i = 0, ii = isect.length; i < ii; i++) {
+				var subID = isect[i];
+				resultSet.push({
+					'name': _.find(subject0.get('data'), function (obj) {
+						console.log(obj);
+						if (obj.id == subID)
+							return obj.name;
+						else
+							return undefined;
+					}).name,
+					'id': subID
+				});
+			}
+			console.log(resultSet);
+			this.set({'matches': resultSet}, {'silent': true});
 		}
 	});
 
@@ -58,6 +74,15 @@ function ($, _, Backbone, Handlebars, html) {
 
 			$('#userInputFields').hide();
 			$('#reset').show();
+
+			// Make tooltip events
+			$('#ifgs .likes img').on('mouseover', function () {
+				var offs = $(this).offset();
+				$('#tooltip').text($(this).parent().attr('alt')).show().css({'left': offs.left + 60, 'top': offs.top});
+			})
+			.on('mouseout', function () {
+				$('#tooltip').hide();
+			});
 
 			// this.model.clear({'silent': true});
 			// this.model.set({'user': title}, {'silent': true});
