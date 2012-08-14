@@ -3,6 +3,7 @@
 	font-family: sans-serif;
 	width: 258px;
 	margin: 0px auto;
+	text-align: center;
 }
 
 /* Clearfix */
@@ -30,16 +31,15 @@ html[xmlns] .clearfix {
 /* IFizzGigs Header */
 
 #ifgs #header {
-	text-align: center;
+	
 }
 
-/* IFizzGigs User Box */
-#ifgs .user {
+/* IFizzGigs User Styles */
+#ifgs .user, #ifgs .likes {
 	border: 1px solid #999;
 	border-radius: 2px;
 	background-color: #eee;
 	width: 236px;
-	text-align: center;
 	padding: 10px;
 }
 
@@ -48,7 +48,7 @@ html[xmlns] .clearfix {
 	width: 235px;
 }
 
-#ifgs .user img {
+#ifgs .user img, #ifgs .likes img {
 	box-shadow: 0px 0px 5px 1px #999;
 	border-radius: 4px;
 }
@@ -76,4 +76,10 @@ html[xmlns] .clearfix {
 	border-radius: 2px;
 	float: left;
 	cursor: pointer;
+}
+
+/* IFizzGigs Likes Styles */
+
+#ifgs .likes img {
+	padding: 3px;
 }

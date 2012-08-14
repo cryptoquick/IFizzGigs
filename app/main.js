@@ -37,17 +37,33 @@ function ($, _, Backbone, user, likes) {
 	})
 	.val('Facebook Username');
 
+	/* Make some models and views for our Facebook users */
 	// Yours
-	var yourum = new user.model();
-	yourum.set({'whose': 'yours'});
-	$('.user').append('<div class="user_' + yourum.get('whose') + '">');
+	var yourum = new user.model({'title': 'yours'});
+	$('.user').append('<div class="user_' + yourum.get('title') + '">');
 	var youruv = new user.view({model: yourum});
 
 	// Theirs
-	var theirum = new user.model();
-	theirum.set({'whose': 'theirs'});
-	$('.user').append('<div class="user_' + theirum.get('whose') + '">');
+	var theirum = new user.model({'title': 'theirs'});
+	$('.user').append('<div class="user_' + theirum.get('title') + '">');
 	var theiruv = new user.view({model: theirum});
 
+	// Make a collection and store our users
+	var UsersCollection = Backbone.Collection.extend({
+		model: user.model
+	});
+
+	ifgs.users = new UsersCollection([yourum, theirum]);
+
+	var LikesCollection = Backbone.Collection.extend({
+		model: likes.model
+	});
+
+	ifgs.likes = new LikesCollection();
+
+	// ifgs.users.where('title': 'yours')[0].compare(ifgs.users.)
+	// console.log(ifgs.users.at(0));
 	
+	// Number likes fetched. Likes will run a comparison after state 2.
+	ifgs.likeState = 0;
 });
