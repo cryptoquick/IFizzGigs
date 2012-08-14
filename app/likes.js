@@ -33,7 +33,6 @@ function ($, _, Backbone, Handlebars, html) {
 				var subID = isect[i];
 				resultSet.push({
 					'name': _.find(subject0.get('data'), function (obj) {
-						console.log(obj);
 						if (obj.id == subID)
 							return obj.name;
 						else
@@ -42,7 +41,7 @@ function ($, _, Backbone, Handlebars, html) {
 					'id': subID
 				});
 			}
-			console.log(resultSet);
+			
 			this.set({'matches': resultSet}, {'silent': true});
 		}
 	});
