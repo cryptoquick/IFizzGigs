@@ -33,11 +33,9 @@ function ($, _, Backbone, Handlebars, html) {
 		},
 
 		render: function (evt) {
+			console.log(this.model);
 			// Render serialized model to compiled template
 			this.$el.find('.user_' + this.model.get('whose')).html(this.template(this.model.toJSON()));
-
-			// For chaining
-			return this;
 		},
 
 		events: {
@@ -99,6 +97,7 @@ function ($, _, Backbone, Handlebars, html) {
 			this.model.set({'whose': whose});
 			this.model.accessToken = response.authResponse.accessToken;
 
+			// Basic user data from Facebook
 			if (this.model.get('whose') == 'yours')
 				this.model.url = 'https://graph.facebook.com/' + response.authResponse.userID + '?access_token=' + this.model.accessToken;
 			else

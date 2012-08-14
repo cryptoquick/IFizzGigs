@@ -42,16 +42,12 @@ function ($, _, Backbone, user, likes) {
 	yourum.set({'whose': 'yours'});
 	$('.user').append('<div class="user_' + yourum.get('whose') + '">');
 	var youruv = new user.view({model: yourum});
-	// youruv.setElement($('.user_' + yourum.get('whose')));
-	// console.log($('.user_' + yourum.get('whose')));
 
 	// Theirs
 	var theirum = new user.model();
 	theirum.set({'whose': 'theirs'});
 	$('.user').append('<div class="user_' + theirum.get('whose') + '">');
 	var theiruv = new user.view({model: theirum});
-	// theiruv.setElement($('.user_' + theirum.get('whose')));
 
-	// yourum.fetch();
-	// theirum.fetch();
+	
 });

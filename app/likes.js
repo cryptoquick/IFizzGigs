@@ -1,12 +1,26 @@
 define([
-	'app/like',
+	'zepto',
 	'underscore',
-	'backbone'
+	'backbone',
+	'handlebars',
+	'text!tpl/likes.html'
 ],
-function (Like) {
-	var Likes = Backbone.Collection.extend({
+function ($, _, Backbone, Handlebars, html) {
+	var likes = {};
 
+	likes.model = Backbone.Model.extend({
+		initialize: function () {
+			this.url = 'https://graph.facebook.com/';
+		},
+
+		compare: function (subject) {
+
+		}
 	});
 
-	return Likes;
+	likes.view = Backbone.View.extend({
+		el: $('.likes')
+	});
+
+	return likes;
 });
